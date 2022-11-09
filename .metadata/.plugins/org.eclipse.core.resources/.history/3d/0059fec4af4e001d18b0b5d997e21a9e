@@ -1,0 +1,29 @@
+package com.student.service;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.student.entity.StudentEntity;
+
+@ExtendWith(MockitoExtension.class)
+public class StudentServiceImplTest {
+	
+	
+	@InjectMocks
+	StudentServiceImpl service;			//dependent
+	
+	@Mock
+	IStudentRepository studentRepository;		//dependency
+	
+	
+	@Test
+	void testNewStudent() {
+		StudentEntity student = new StudentEntity();
+		student.setId(1);
+		when(studentRepository.save(student)).thenResult(1);
+	}
+
+}

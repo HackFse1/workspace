@@ -1,0 +1,28 @@
+package com.user.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.user.entity.Contact;
+import com.user.entity.User;
+
+@Service
+public class UserServiceImpl implements UserService{
+	
+	List<User> = List.of(
+					new User(1311L, "Nishant", "9234567890", );
+			);
+	
+	
+	
+	
+	@Override
+	public User getUser(long id) {
+		return null;
+	}
+	
+	
+
+}

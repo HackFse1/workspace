@@ -1,0 +1,22 @@
+package com.student.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.student.entity.StudentEntity;
+
+public interface IStudentService {
+	
+	public Integer addStudent(StudentEntity student);
+	
+	public Optional<StudentEntity> getStudent(Integer id); 
+	
+	public List<StudentEntity> getStudents();
+	
+	public void deleteStudent(Integer id);
+	
+	public List<StudentEntity> getStudentThroughName(String name);
+	
+	public Integer updateStudent(StudentEntity student);
+
+}

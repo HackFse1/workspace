@@ -1,0 +1,54 @@
+package com.booking.controller;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.booking.entity.FlightBooking;
+import com.booking.service.BookingService;
+
+@RestController
+public class FlightBookingController {
+
+	@Autowired
+	BookingService flightbookingService;
+	@Autowired
+	private RestTemplate restTemplate;
+
+	
+	@PostMapping("/booking")
+	public Integer createFlightBooking(@RequestBody FlightBooking booking) {
+		Integer id = flightbookingService.addFlightBooking(booking);
+		System.out.println(id);
+		return id;
+	}
+	
+	@GetMapping("/booking/{id}")
+	public Optional<FlightBooking> getFlightBookingData(@PathVariable Integer id) {
+		Optional<FlightBooking> flightbooking = flightbookingService.getFlightBookingData(id);
+		return flightbooking;
+	}
+
+	@DeleteMapping("/booking/{id}")
+		public void deleteFlightBooking(@PathVariable Integer id) {
+			flightbookingService.deleteFlightBooking(id);
+
+	}
+	
+	@GetMapping("/flights")
+	public @ResponseBody List getflightsdata() {
+	List flights = this.restTemplate.getForObject("http://localhost:8080/allflights", List.class);
+		return flights;
+	}
+	
+	
+	
+}

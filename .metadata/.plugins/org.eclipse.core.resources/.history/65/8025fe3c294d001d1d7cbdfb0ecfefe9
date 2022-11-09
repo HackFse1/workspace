@@ -1,0 +1,13 @@
+package com.student.service;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.student.entity.StudentEntity;
+
+public interface IStudentRepository extends JpaRepository<StudentEntity, Integer> {
+
+	List<StudentEntity> getStudentByFirstName(String name);
+
+}

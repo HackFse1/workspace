@@ -1,0 +1,9 @@
+package com.student.service;
+
+import com.student.entity.StudentEntity;
+
+public interface IStudentService {
+	
+	public Integer addStudent(StudentEntity student);
+
+}

@@ -1,0 +1,27 @@
+package com.contact.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.contact.entity.Contact;
+
+public class ContactServiceImpl implements ContactService {
+	
+	List<Contact> list = List.of(
+							new Contact(1L, "Amit@gmail.com", "Amit", 1311L),		
+							new Contact(2L, "Priya@gmail.com", "Priya", 1323L),
+							new Contact(3L, "Sarath@gmail.com", "Sarath", 1345L),
+							new Contact(4L, "Neha@gmail.com", "Neha", 1367L),
+							new Contact(5L, "Banu@gmail.com", "Banu", 1373L),
+							new Contact(6L, "Juli@gmail.com", "Juli", 1389L),
+							new Contact(7L, "Uday@gmail.com", "Uday", 1395L),
+							new Contact(8L, "Vimal@gmail.com", "Vimal", 1311L)
+			
+			);
+	
+	@Override
+	public List<Contact> getContactsofUsers(Long userId) {
+		return list.stream().filter(contact -> contact.getUserId().equals(userId)).collect(Collectors.toList());
+	}
+	
+}
